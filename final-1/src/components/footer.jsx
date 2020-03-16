@@ -7,7 +7,9 @@ class Footer extends Component {
       <footer>
         <button onClick={this.props.goBack}>Back</button>
         <button>Help</button>
-        <button>Review Vote</button>
+        <button onClick={() => (window.location.href = "/review")}>
+          Review Vote
+        </button>
         <button onClick={() => (window.location.href = "/cast")}>
           Cast Vote
         </button>

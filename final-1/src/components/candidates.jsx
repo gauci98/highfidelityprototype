@@ -17,11 +17,28 @@ class Candidates extends Component {
     }
   };
 
+  showPreference(preference) {
+    // If the candidate is not assigned a preference yet, do not display anything
+    if (preference === 0) {
+      return "";
+    }
+    return (
+      //If the candidate is assigned a preference, display it next to the candidate
+      <div className="preference-box">
+        <h4 className="no-margin">{preference}</h4>
+      </div>
+    );
+  }
+
+  goToPreferences(candidateName) {
+    localStorage.setItem("chosenCandidate", candidateName);
+    window.location.href = "/preferences";
+  }
+
   render() {
     var party_filter = localStorage.getItem("partyFilter");
     party_filter = parseInt(party_filter);
     const candidates = this.getFilteredCandidates(party_filter);
-    console.log(candidates);
 
     var header_text = "List of ";
     if (party_filter === 0) {
@@ -35,6 +52,9 @@ class Candidates extends Component {
       <React.Fragment>
         <header>
           <h1 aria-live="assertive">{header_text}</h1>
+          <h2 aria-live="assertive">
+            Choose a candidate to assign a preference to
+          </h2>
         </header>
         <main>
           <ol>
@@ -44,21 +64,21 @@ class Candidates extends Component {
                 <li
                   role="button"
                   key={c.id}
-                  // onClick={() => this.goToPreferences(c.name)}
+                  onClick={() => this.goToPreferences(c.name)}
                 >
                   {/* <img
                     className="party-image"
                     src={this.getPartyImage(c.party)}
                     alt={this.getAltText(c.party)}
                   /> */}
-                  <h3>{c.fullname}</h3>
+                  <h3>{c.name}</h3>
                   {/* Show the candidate's assigned preference */}
-                  {/* {this.showPreference(c.preference)} */}
+                  {this.showPreference(c.preference)}
                 </li>
               ))}
           </ol>
         </main>
-        <Footer goBack={() => this.props.history.goBack()} />
+        <Footer goBack={() => (window.location.href = "/filter")} />
       </React.Fragment>
     );
   }
