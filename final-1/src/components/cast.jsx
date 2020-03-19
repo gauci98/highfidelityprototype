@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Alert from "./alert";
 import Footer from "./footer";
+import casticon from "../icons/vote.png";
 
 class CastVote extends Component {
   displayCommentBtn() {
@@ -55,42 +56,63 @@ class CastVote extends Component {
     return 0;
   }
 
+  goToReview() {
+    window.location.href = "/review";
+  }
+
+  goToFinish() {
+    window.location.href = "/finish";
+  }
+
+  goToFilter() {
+    window.location.href = "/filter";
+  }
+
   render() {
     var valid = this.isVoteValid();
+    var protestVote = localStorage.getItem("protest vote");
+
+    if (protestVote === true) {
+      return (
+        <Alert
+          title="Are you sure you want to cast your vote? This action is irreversible."
+          btn1="Yes"
+          btn1Action={this.goToFinish}
+          btn2="No"
+          btn2Action={this.goToFilter}
+        />
+      );
+    }
+
     if (valid === 0) {
       return (
-        <React.Fragment>
-          <header>
-            <h1 aria-live="assertive">Your vote is valid.</h1>
-            <h2>Please tap 'Cast Vote' to officially cast your vote</h2>
-          </header>
-          <main>
-            <i>This action is irreversable.</i>
-            <br></br>
-            <i>
-              Please make sure you are casting your intended vote by reviewing
-              your vote.
-            </i>
-            {this.displayCommentBtn()}
-            <button onClick={() => (window.location.href = "/finish")}>
-              Cast vote
-            </button>
-          </main>
-          <Footer goBack={() => this.props.history.goBack()} />
-        </React.Fragment>
+        <Alert
+          title="Are you sure you want to cast your vote? This action is irreversible."
+          btn1="Yes"
+          btn1Action={this.goToFinish}
+          btn2="No"
+          btn2Action={this.goToReview}
+        />
       );
     } else {
       var msg =
         "Please assign preference number " +
         valid +
-        " before casting your vote";
+        " before casting your vote.";
       return (
         <React.Fragment>
           <header>
             <h1 aria-live="assertive">Your vote is invalid.</h1>
             <h2 aria-live="assertive">{msg}</h2>
           </header>
-          <main></main>
+          <main>
+            <button
+              className="filter-btn"
+              onClick={() => (window.location.href = "/filter")}
+            >
+              View candidates
+            </button>
+          </main>
           <Footer goBack={() => this.props.history.goBack()} />
         </React.Fragment>
       );

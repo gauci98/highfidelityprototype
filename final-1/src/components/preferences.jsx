@@ -1,7 +1,10 @@
 import React, { Component } from "react";
-import Footer from "./footer";
+import Alert from "./alert";
+import backicon from "../icons/back.png";
+import deleteicon from "../icons/delete.png";
 
 class Preferences extends Component {
+  state = { display: 0 };
   getStyle(num) {
     var candidates = localStorage.getItem("candidates");
     candidates = [...JSON.parse(candidates)];
@@ -56,8 +59,12 @@ class Preferences extends Component {
     var candidate = candidates.find(c => c.name === candidateName);
     if (candidate.preference !== 0) {
       return (
-        <button onClick={() => this.removePreference(candidateName)}>
-          delete preference
+        <button
+          className="delete-btn"
+          onClick={() => this.setState({ display: 1 })}
+        >
+          <img className="delete-icon" alt="" src={deleteicon} />
+          Delete preference
         </button>
       );
     } else {
@@ -84,12 +91,13 @@ class Preferences extends Component {
     window.location.href = "/candidates";
   };
 
-  removePreference(candidateName) {
+  removePreference() {
     //This method executes when the user confirms preference unassignement
 
     // Retrieve the candidates from local storage and find the candidate to be unassigned the preference
     var candidates = localStorage.getItem("candidates");
     candidates = [...JSON.parse(candidates)];
+    var candidateName = localStorage.getItem("chosenCandidate");
     var candidate = candidates.find(c => c.name === candidateName);
 
     // Set the preference of the candidate to 0 meaning assigned no preference
@@ -109,33 +117,53 @@ class Preferences extends Component {
     const candidateChosen = localStorage.getItem("chosenCandidate");
     const header_text = "Choose a preference to assign to " + candidateChosen;
     const preferences = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
-    return (
-      <React.Fragment>
-        <header>
-          <h1 aria-live="assertive"> {header_text}</h1>
-        </header>
-        <main>
-          {this.checkCurrentPreference(candidateChosen)}
-          <div>
-            {/* Display all the numbers, but hide the preferences that are already assigned */}
-            {preferences.map(num => (
-              <button
-                key={num}
-                className={this.getStyle(num)}
-                onClick={() => this.handlePreferenceAssignment(num)}
-                aria-hidden={this.getStyle(num) === "number" ? "false" : "true"}
-              >
-                <h2>{num}</h2>
-              </button>
-            ))}
-          </div>
-        </main>
-        <footer>
-          <button onClick={() => this.props.history.goBack()}>Back</button>
-          {this.displayDeleteBtn(candidateChosen)}
-        </footer>
-      </React.Fragment>
-    );
+
+    if (this.state.display === 0) {
+      return (
+        <React.Fragment>
+          <header>
+            <h1 aria-live="assertive"> {header_text}</h1>
+          </header>
+          <main>
+            {this.checkCurrentPreference(candidateChosen)}
+            <div>
+              {/* Display all the numbers, but hide the preferences that are already assigned */}
+              {preferences.map(num => (
+                <button
+                  key={num}
+                  className={this.getStyle(num)}
+                  onClick={() => this.handlePreferenceAssignment(num)}
+                  aria-hidden={
+                    this.getStyle(num) === "number" ? "false" : "true"
+                  }
+                >
+                  {num}
+                </button>
+              ))}
+            </div>
+          </main>
+          <nav>
+            <button
+              className="back-btn"
+              onClick={() => this.props.history.goBack()}
+            >
+              <img className="back-icon" src={backicon} alt="Go back" />
+            </button>
+            {this.displayDeleteBtn(candidateChosen)}
+          </nav>
+        </React.Fragment>
+      );
+    } else if (this.state.display === 1) {
+      return (
+        <Alert
+          title="Are you sure you want to delete this preference?"
+          btn1="Yes"
+          btn1Action={this.removePreference}
+          btn2="No"
+          btn2Action={() => (window.location.href = "/preferences")}
+        />
+      );
+    }
   }
 }
 

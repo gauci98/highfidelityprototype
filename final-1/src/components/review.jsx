@@ -1,7 +1,11 @@
 import React, { Component } from "react";
+import Alert from "./alert";
 import Footer from "./footer";
+import soicon from "../icons/startover.png";
+import casticon from "../icons/vote.png";
 
 class ReviewVote extends Component {
+  state = { display: 0 };
   getAssignedCandidates() {
     // Retrieve the candidates from local storage and filter out any candidates without a preference assigned
     const candidates = localStorage.getItem("candidates");
@@ -9,10 +13,31 @@ class ReviewVote extends Component {
     return jsonCandidates.filter(c => c.preference !== 0);
   }
 
+  getStyle(partyId) {
+    console.log(partyId);
+    var class_name = "candidate-box";
+
+    if (partyId === 1) {
+      class_name += " yellow-border";
+    } else if (partyId === 2) {
+      class_name += " pink-border";
+    } else if (partyId === 3) {
+      class_name += " orange-border";
+    } else if (partyId === 4) {
+      class_name += " green-border";
+    }
+    return class_name;
+  }
+
+  startOver() {
+    localStorage.clear();
+    window.location.href = "/filter";
+  }
+
   render() {
     const candidates = this.getAssignedCandidates();
     // If none of the candidates are assigned a preference, inform the user
-    if (candidates.length === 0) {
+    if (this.state.display === 0 && candidates.length === 0) {
       return (
         <React.Fragment>
           <header>
@@ -21,8 +46,27 @@ class ReviewVote extends Component {
               You have not assigned any preferences yet.
             </h2>
           </header>
+          <main>
+            <button
+              className="rev-btn"
+              onClick={() => (window.location.href = "/cast")}
+            >
+              <img className="rev-icon" id="cast-icon" src={casticon} />
+              Cast vote
+            </button>
+          </main>
           <Footer goBack={() => this.props.history.goBack()} />
         </React.Fragment>
+      );
+    } else if (this.state.display === 1) {
+      return (
+        <Alert
+          title="Are you sure you want to delete all your assigned preferences?"
+          btn1="Yes"
+          btn1Action={this.startOver}
+          btn2="No"
+          btn2Action={() => (window.location.href = "/review")}
+        />
       );
     }
 
@@ -36,29 +80,37 @@ class ReviewVote extends Component {
           </h2>
         </header>
         <main>
-          <ol>
+          <ol className="candidates-container" id="review-container" l>
             {candidates
               .sort((a, b) => a.preference - b.preference)
               .map(c => (
-                <li key={c.id}>
-                  {/* <img
-                    className="party-image"
-                    src={this.getPartyImage(c.party)}
-                    alt={this.getAltText(c.party)}
-                  /> */}
+                <li className={this.getStyle(c.party)} role="button" key={c.id}>
                   <h3>{c.name}</h3>
-                  <div>
+                  <img
+                    className="candidate-img"
+                    src={require("../" + c.image)}
+                    alt=" "
+                  />
+                  <div className="preference-box">
                     <h4>{c.preference}</h4>
                   </div>
                 </li>
               ))}
           </ol>
-          <div className="attention-box">
-            <i>
-              If you would like to change your vote you can do so from the
-              ballot
-            </i>
-          </div>
+          <button
+            className="rev-btn"
+            onClick={() => (window.location.href = "/cast")}
+          >
+            <img className="rev-icon" id="cast-icon" src={casticon} />
+            Cast vote
+          </button>
+          <button
+            className="rev-btn"
+            onClick={() => this.setState({ display: 1 })}
+          >
+            <img className="rev-icon" src={soicon} />
+            Start over
+          </button>
         </main>
         <Footer goBack={() => this.props.history.goBack()} />
       </React.Fragment>

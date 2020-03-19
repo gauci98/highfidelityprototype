@@ -15,6 +15,7 @@ function App() {
   // if the loacl storage does not have the candidates, load them
   if (localStorage.getItem("candidates") === null) {
     localStorage.setItem("candidates", JSON.stringify(getCandidates()));
+    localStorage.setItem("protest vote", false);
   }
 
   return (
