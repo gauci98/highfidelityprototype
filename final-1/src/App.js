@@ -2,7 +2,7 @@ import "./App.css";
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 import getCandidates from "./candidatelist";
-import Start from "./components/start";
+// import Start from "./components/start";
 import Filter from "./components/filter";
 import Candidates from "./components/candidates";
 import Preferences from "./components/preferences";
@@ -15,14 +15,13 @@ function App() {
   // if the loacl storage does not have the candidates, load them
   if (localStorage.getItem("candidates") === null) {
     localStorage.setItem("candidates", JSON.stringify(getCandidates()));
-    localStorage.setItem("protest vote", false);
   }
 
   return (
     <React.Fragment>
       <Switch>
-        <Route path="/" exact component={Start} />
-        <Route path="/filter" component={Filter} />
+        {/* <Route path="/" exact component={Start} /> */}
+        <Route path="/" exact component={Filter} />
         <Route path="/candidates" component={Candidates} />
         <Route path="/preferences" component={Preferences} />
         <Route path="/review" component={ReviewVote} />

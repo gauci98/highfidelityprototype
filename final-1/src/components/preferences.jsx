@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Alert from "./alert";
 import backicon from "../icons/back.png";
-import deleteicon from "../icons/delete.png";
+import deleteicon from "../icons/delete-circle.png";
 
 class Preferences extends Component {
   state = { display: 0 };
@@ -31,11 +31,12 @@ class Preferences extends Component {
       var message1 =
         candidateName +
         " is already assign preference number " +
-        candidate.preference;
+        candidate.preference +
+        ".";
       var message2 =
-        "If you do not wish to change this preference tap on the back button at the bottom of the page";
+        "If you do not wish to change this preference tap on the back button at the bottom-left of the screen";
       var message3 =
-        "If you only wish to unassign " +
+        "To unassign " +
         candidateName +
         " from their current preference tap the delete preference button at the bottom of the page";
 

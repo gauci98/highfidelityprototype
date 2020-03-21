@@ -95,7 +95,7 @@ class Candidates extends Component {
             {this.showPartyCandidates(3, "orange-background")}
             {this.showPartyCandidates(4, "green-background")}
           </main>
-          <Footer goBack={() => (window.location.href = "/filter")} />
+          <Footer goBack={() => (window.location.href = "/")} />
         </React.Fragment>
       );
     } else {
@@ -129,7 +129,7 @@ class Candidates extends Component {
                 ))}
             </ol>
           </main>
-          <Footer goBack={() => (window.location.href = "/filter")} />
+          <Footer goBack={() => (window.location.href = "/")} />
         </React.Fragment>
       );
     }

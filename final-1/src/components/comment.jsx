@@ -1,13 +1,28 @@
 import React, { Component } from "react";
+import Alert from "./alert";
 import Footer from "./footer";
 import casticon from "../icons/vote.png";
 
 class SubmitComment extends Component {
-  castVote() {
-    localStorage.setItem("protest vote", true);
-    window.location.href = "/cast";
+  state = { display: 0 };
+
+  goToFinish() {
+    window.location.href = "/finish";
   }
+
   render() {
+    if (this.state.display === 1) {
+      return (
+        <Alert
+          title="Are you sure you want to cast your vote? This action is irreversible."
+          btn1="Yes"
+          btn1Action={this.goToFinish}
+          btn2="No"
+          btn2Action={() => (window.location.href = "/submitComment")}
+        />
+      );
+    }
+
     return (
       <React.Fragment>
         <header>
@@ -18,8 +33,15 @@ class SubmitComment extends Component {
           <label htmlFor="comment">Enter your comment</label>
           <i>(This can be left empty)</i>
           <input id="comment" type="text"></input>
-          <button className="rev-btn" onClick={() => this.castVote()}>
-            <img className="rev-icon" id="cast-icon" src={casticon} />
+          <button
+            className="rev-btn"
+            onClick={() => this.setState({ display: 1 })}
+            style={{
+              borderColor: "#006600",
+              color: "#006600"
+            }}
+          >
+            <img className="rev-icon" id="cast-icon" src={casticon} alt="" />
             Cast vote
           </button>
         </main>

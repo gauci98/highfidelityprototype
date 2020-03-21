@@ -64,7 +64,7 @@ var candidates = [
   },
   {
     id: 10,
-    name: "MacDonal Mark",
+    name: "MacDonald Mark",
     image: "images/candidate10.jpg",
     party: 2,
     preference: 0

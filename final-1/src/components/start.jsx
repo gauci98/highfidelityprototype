@@ -11,7 +11,7 @@ class Start extends Component {
         </header>
         <main>
           <button>How to cast your vote</button>
-          <button onClick={() => (window.location.href = "/filter")}>
+          <button onClick={() => (window.location.href = "/")}>
             Start voting
           </button>
         </main>

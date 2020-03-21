@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Alert from "./alert";
 import Footer from "./footer";
-import casticon from "../icons/vote.png";
+// import casticon from "../icons/vote.png";
 
 class CastVote extends Component {
   displayCommentBtn() {
@@ -65,24 +65,11 @@ class CastVote extends Component {
   }
 
   goToFilter() {
-    window.location.href = "/filter";
+    window.location.href = "/";
   }
 
   render() {
     var valid = this.isVoteValid();
-    var protestVote = localStorage.getItem("protest vote");
-
-    if (protestVote === true) {
-      return (
-        <Alert
-          title="Are you sure you want to cast your vote? This action is irreversible."
-          btn1="Yes"
-          btn1Action={this.goToFinish}
-          btn2="No"
-          btn2Action={this.goToFilter}
-        />
-      );
-    }
 
     if (valid === 0) {
       return (
@@ -91,7 +78,7 @@ class CastVote extends Component {
           btn1="Yes"
           btn1Action={this.goToFinish}
           btn2="No"
-          btn2Action={this.goToReview}
+          btn2Action={() => this.props.history.goBack()}
         />
       );
     } else {
@@ -108,7 +95,7 @@ class CastVote extends Component {
           <main>
             <button
               className="filter-btn"
-              onClick={() => (window.location.href = "/filter")}
+              onClick={() => (window.location.href = "/")}
             >
               View candidates
             </button>
