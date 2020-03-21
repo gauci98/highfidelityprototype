@@ -49,7 +49,7 @@ button {
   width: 65vw;
 }
 
-.back-btn {
+.small-btn {
   width: 13vw;
 }
 
@@ -286,6 +286,28 @@ ol {
 .red-alert {
   border: 1vw solid red;
   background-color: #ffc9c9;
+}
+
+#back {
+  background-color: #ff6600;
+}
+
+#help {
+  background-color: #b3d9ff;
+}
+
+#nav-review {
+  background-color: #00d100;
+}
+
+#cast {
+  border-color: #006600;
+  color: #006600;
+}
+
+#startover {
+  border-color: #b30000;
+  color: #b30000;
 }
 
 /*scroll bar*/

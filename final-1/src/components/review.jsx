@@ -202,11 +202,8 @@ class ReviewVote extends Component {
           <main>
             <button
               className="rev-btn"
+              id="cast"
               onClick={() => (window.location.href = "/cast")}
-              style={{
-                borderColor: "#006600",
-                color: "#006600"
-              }}
             >
               <img className="rev-icon" id="cast-icon" src={casticon} alt="" />
               Cast vote
@@ -386,19 +383,16 @@ class ReviewVote extends Component {
 
           <button
             className="rev-btn"
+            id="cast"
             onClick={() => (window.location.href = "/cast")}
-            style={{
-              borderColor: "#006600",
-              color: "#006600"
-            }}
           >
             <img className="rev-icon" id="cast-icon" src={casticon} alt="" />
             Cast vote
           </button>
           <button
             className="rev-btn"
+            id="startover"
             onClick={() => this.setState({ display: 1 })}
-            style={{ borderColor: "#B30000", color: "#B30000" }}
           >
             <img className="rev-icon" src={soicon} alt="" />
             Start over

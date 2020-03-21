@@ -2,13 +2,13 @@ import "./App.css";
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 import getCandidates from "./candidatelist";
-// import Start from "./components/start";
 import Filter from "./components/filter";
 import Candidates from "./components/candidates";
 import Preferences from "./components/preferences";
 import ReviewVote from "./components/review";
 import CastVote from "./components/cast";
 import SubmitComment from "./components/comment";
+import Help from "./components/help";
 import Finish from "./components/finish";
 
 function App() {
@@ -24,6 +24,7 @@ function App() {
         <Route path="/" exact component={Filter} />
         <Route path="/candidates" component={Candidates} />
         <Route path="/preferences" component={Preferences} />
+        <Route path="/help" component={Help} />
         <Route path="/review" component={ReviewVote} />
         <Route path="/cast" component={CastVote} />
         <Route path="/submitComment" component={SubmitComment} />

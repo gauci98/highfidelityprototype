@@ -35,11 +35,8 @@ class SubmitComment extends Component {
           <input id="comment" type="text"></input>
           <button
             className="rev-btn"
+            id="cast"
             onClick={() => this.setState({ display: 1 })}
-            style={{
-              borderColor: "#006600",
-              color: "#006600"
-            }}
           >
             <img className="rev-icon" id="cast-icon" src={casticon} alt="" />
             Cast vote
