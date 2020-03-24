@@ -194,7 +194,7 @@ class ReviewVote extends Component {
       return (
         <React.Fragment>
           <header>
-            <h1 aria-live="assertive">Review page</h1>
+            <h1 aria-live="assertive">Review your vote</h1>
             <h2 aria-live="assertive">
               You have not assigned any preferences yet.
             </h2>
@@ -319,7 +319,7 @@ class ReviewVote extends Component {
     return (
       <React.Fragment>
         <header>
-          <h1 aria-live="assertive">Review page</h1>
+          <h1 aria-live="assertive">Review your vote</h1>
           <h2>
             The following are the candidates you have assigned preference to in
             ascending order of preference

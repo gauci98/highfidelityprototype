@@ -45,12 +45,17 @@ button {
   margin: 0 3vw 0 0;
 }
 
+.small-btn {
+  width: 13vw;
+}
+
 .lrg-btn {
   width: 65vw;
 }
 
-.small-btn {
-  width: 13vw;
+.xl-btn {
+  width: 100vw;
+  margin: 0;
 }
 
 .back-icon {
@@ -246,6 +251,31 @@ ol {
 
 .rev-name {
   font-size: 30px;
+}
+
+.help-list {
+  list-style-type: none;
+}
+
+.help-item {
+  font-size: 30px;
+  border: 0.5vw solid black;
+  margin: 3vh 0;
+  padding: 2vw;
+}
+
+.steps-list {
+  font-size: 28px;
+  text-align: justify;
+  padding-left: 4vw;
+}
+
+.steps-item {
+  padding: 1vw;
+  /* WCAG text spacing guidelines */
+  line-height: 42px;
+  word-spacing: 4px; /*4.5*/
+  letter-spacing: 3px; /*3.5*/
 }
 
 .yellow-background {

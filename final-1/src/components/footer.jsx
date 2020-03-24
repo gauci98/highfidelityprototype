@@ -4,20 +4,6 @@ import helpicon from "../icons/help.png";
 import casticon from "../icons/vote-black.png";
 
 class Footer extends Component {
-  getStyle(class_name) {
-    // var path = window.location.pathname;
-    // if (path === "/help" && class_name === "back-btn") {
-    //   class_name += " hidden";
-    // } else if (class_name === "back-btn" && path === "/") {
-    //   class_name += " hidden";
-    // } else if ((class_name === "lrg-btn") & (path === "/submitComment")) {
-    //   class_name += " hidden";
-    // } else if (class_name === "lrg-btn" && path === "/review") {
-    //   class_name += " hidden";
-    // }
-    return class_name;
-  }
-
   getHelpStyle() {
     var path = window.location.pathname;
     if (path === "/help") {
