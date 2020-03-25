@@ -26,13 +26,13 @@ class ReviewVote extends Component {
     return jsonCandidates.filter(c => c.preference !== 0);
   }
 
-  getMaxPref(candidates) {
-    var max_pref = candidates.reduce(
-      (max, c) => (c.preference > max ? c.preference : max),
-      candidates[0].preference
-    );
-    return max_pref;
-  }
+  // getMaxPref(candidates) {
+  //   var max_pref = candidates.reduce(
+  //     (max, c) => (c.preference > max ? c.preference : max),
+  //     candidates[0].preference
+  //   );
+  //   return max_pref;
+  // }
 
   getStyle(class_name, partyId) {
     if (partyId === 1) {
@@ -178,8 +178,8 @@ class ReviewVote extends Component {
   };
 
   startOver() {
-    localStorage.clear();
-    window.location.href = "/";
+    localStorage.removeItem("candidates");
+    window.location.href = "/review";
   }
 
   render() {
@@ -314,7 +314,7 @@ class ReviewVote extends Component {
       );
     }
 
-    var max_pref = this.getMaxPref(candidates);
+    // var max_pref = this.getMaxPref(candidates);
 
     return (
       <React.Fragment>
@@ -357,11 +357,11 @@ class ReviewVote extends Component {
                     <button
                       className="up-down-btn"
                       onClick={() => this.moveDown(c.name, c.preference)}
-                      style={
-                        c.preference === max_pref
-                          ? { visibility: "hidden" }
-                          : { marginTop: "1vh" }
-                      }
+                      // style={
+                      //   c.preference === max_pref
+                      //     ? { visibility: "hidden" }
+                      //     : { marginTop: "1vh" }
+                      // }
                       aria-label="Decrease preference"
                     >
                       <img className="up-down-icon" src={downicon} alt="" />

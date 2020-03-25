@@ -14,6 +14,13 @@ h3 {
   width: 65vw;
 }
 
+.help-subheading {
+  width: 100vw;
+  font-size: 28px;
+  text-align: left;
+  margin-bottom: 0;
+}
+
 h4 {
   font-size: 30px;
   margin: 4vw 0;
@@ -56,6 +63,12 @@ button {
 .xl-btn {
   width: 100vw;
   margin: 0;
+}
+
+.help-btn {
+  width: 60vw;
+  margin: 2vw;
+  padding: 2vw;
 }
 
 .back-icon {
@@ -200,6 +213,12 @@ input {
   list-style-type: none;
 }
 
+.help-container {
+  max-height: 75vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
 .rev-container {
   height: 11vh;
   display: inline-flex;
@@ -214,7 +233,7 @@ input {
 
 ol {
   padding: 0;
-  margin-top: 0;
+  margin: 0;
 }
 
 .candidate-box {
@@ -267,7 +286,7 @@ ol {
 .steps-list {
   font-size: 28px;
   text-align: justify;
-  padding-left: 4vw;
+  padding-left: 5vw;
 }
 
 .steps-item {
