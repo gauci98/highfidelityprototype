@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Alert from "./alert";
 import Footer from "./footer";
+import getImage from "../imagelist";
 import upicon from "../icons/up.png";
 import downicon from "../icons/down.png";
 import deleteicon from "../icons/delete-red.png";
@@ -25,14 +26,6 @@ class ReviewVote extends Component {
     const jsonCandidates = [...JSON.parse(candidates)];
     return jsonCandidates.filter(c => c.preference !== 0);
   }
-
-  // getMaxPref(candidates) {
-  //   var max_pref = candidates.reduce(
-  //     (max, c) => (c.preference > max ? c.preference : max),
-  //     candidates[0].preference
-  //   );
-  //   return max_pref;
-  // }
 
   getStyle(class_name, partyId) {
     if (partyId === 1) {
@@ -193,11 +186,9 @@ class ReviewVote extends Component {
     if (this.state.display === 0 && candidates.length === 0) {
       return (
         <React.Fragment>
-          <header>
-            <h1 aria-live="assertive">Review your vote</h1>
-            <h2 aria-live="assertive">
-              You have not assigned any preferences yet.
-            </h2>
+          <header aria-live="assertive" aria-atomic="true">
+            <h1>Review your vote</h1>
+            <h2>You have not assigned any preferences yet.</h2>
           </header>
           <main>
             <button
@@ -314,12 +305,10 @@ class ReviewVote extends Component {
       );
     }
 
-    // var max_pref = this.getMaxPref(candidates);
-
     return (
       <React.Fragment>
-        <header>
-          <h1 aria-live="assertive">Review your vote</h1>
+        <header aria-live="assertive" aria-atomic="true">
+          <h1>Review your vote</h1>
           <h2>
             The following are the candidates you have assigned preference to in
             ascending order of preference
@@ -341,7 +330,7 @@ class ReviewVote extends Component {
                       <h4>{c.preference}</h4>
                     </div>
                     <h3 className="rev-name">{c.name}</h3>
-                    <img src={require("../" + c.image)} alt=" " />
+                    <img src={getImage(c.id - 1)} alt=" " />
                   </li>
 
                   <div className="up-down-container">
@@ -357,11 +346,7 @@ class ReviewVote extends Component {
                     <button
                       className="up-down-btn"
                       onClick={() => this.moveDown(c.name, c.preference)}
-                      // style={
-                      //   c.preference === max_pref
-                      //     ? { visibility: "hidden" }
-                      //     : { marginTop: "1vh" }
-                      // }
+                      style={{ marginTop: "2vw" }}
                       aria-label="Decrease preference"
                     >
                       <img className="up-down-icon" src={downicon} alt="" />
@@ -374,7 +359,7 @@ class ReviewVote extends Component {
                     <img
                       className="delete-icon rev-del-icon"
                       src={deleteicon}
-                      alt=" "
+                      alt="delete"
                     />
                   </button>
                 </div>

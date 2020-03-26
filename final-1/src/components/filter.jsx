@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import Footer from "./footer";
 
 class Filter extends Component {
-  // state = {  }
   goToCandidates = x => {
     // redirect to the list of candidates, passing along the party chosen from the filter
     // the party identifier is necassary to filter the candidates
@@ -13,11 +12,9 @@ class Filter extends Component {
   render() {
     return (
       <React.Fragment>
-        <header>
-          <h1 aria-live="assertive">Filter Candidates by Party</h1>
-          <h2 aria-live="assertive">
-            Choose the candidates you want to see on your ballot
-          </h2>
+        <header aria-live="assertive">
+          <h1>Filter Candidates by Party</h1>
+          <h2>Choose the candidates you want to see on your ballot</h2>
         </header>
         <main>
           <button

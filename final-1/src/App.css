@@ -214,7 +214,7 @@ input {
 }
 
 .help-container {
-  max-height: 75vh;
+  max-height: 70vh;
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -293,7 +293,7 @@ ol {
   padding: 1vw;
   /* WCAG text spacing guidelines */
   line-height: 42px;
-  word-spacing: 4px; /*4.5*/
+  word-spacing: 3px; /*4.5*/
   letter-spacing: 3px; /*3.5*/
 }
 

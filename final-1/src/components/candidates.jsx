@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 import Footer from "./footer";
+import Candidate from "./candidate";
 
 class Candidates extends Component {
-  // state = {  }
+  state = {
+    message: null
+  };
 
   showPartyCandidates(partyId, party_style) {
     const candidates = this.getFilteredCandidates(partyId);
@@ -13,24 +16,37 @@ class Candidates extends Component {
           {candidates
             .sort((a, b) => a.party - b.party)
             .map(c => (
-              <li
-                className="candidate-box"
-                role="button"
+              <Candidate
                 key={c.id}
-                onClick={() => this.goToPreferences(c.name)}
-              >
-                <h3>{c.name}</h3>
-
-                <img
-                  className="candidate-img"
-                  src={require("../" + c.image)}
-                  alt=" "
-                />
-                {/* Show the candidate's assigned preference */}
-                {this.showPreference(c.preference)}
-              </li>
+                fullname={c.name}
+                id={c.id - 1}
+                pref={c.preference}
+              />
             ))}
         </ol>
+      </React.Fragment>
+    );
+  }
+
+  renderCandidates() {
+    var party_id = localStorage.getItem("partyFilter");
+    party_id = parseInt(party_id);
+    if (party_id === 1) {
+      return this.showPartyCandidates(1, "yellow-background");
+    } else if (party_id === 2) {
+      return this.showPartyCandidates(2, "pink-background");
+    } else if (party_id === 3) {
+      return this.showPartyCandidates(3, "orange-background");
+    } else if (party_id === 4) {
+      return this.showPartyCandidates(4, "green-background");
+    }
+
+    return (
+      <React.Fragment>
+        {this.showPartyCandidates(1, "yellow-background")}
+        {this.showPartyCandidates(2, "pink-background")}
+        {this.showPartyCandidates(3, "orange-background")}
+        {this.showPartyCandidates(4, "green-background")}
       </React.Fragment>
     );
   }
@@ -61,78 +77,21 @@ class Candidates extends Component {
     );
   }
 
-  goToPreferences(candidateName) {
-    localStorage.setItem("chosenCandidate", candidateName);
-    window.location.href = "/preferences";
+  componentDidMount() {
+    this.setState({ message: "hello" });
   }
 
   render() {
-    var party_filter = localStorage.getItem("partyFilter");
-    var party_style = "";
-    party_filter = parseInt(party_filter);
-    const candidates = this.getFilteredCandidates(party_filter);
-
-    if (party_filter === 1) {
-      party_style = "yellow-background";
-    } else if (party_filter === 2) {
-      party_style = "pink-background";
-    } else if (party_filter === 3) {
-      party_style = "orange-background";
-    } else if (party_filter === 4) {
-      party_style = "green-background";
-    }
-
-    if (party_filter === 0) {
-      return (
-        <React.Fragment>
-          <header>
-            {/* <h1 aria-live="assertive">{header_text}</h1> */}
-            <h1 aria-live="assertive">Choose a candidate</h1>
-          </header>
-          <main className="candidates-container">
-            {this.showPartyCandidates(1, "yellow-background")}
-            {this.showPartyCandidates(2, "pink-background")}
-            {this.showPartyCandidates(3, "orange-background")}
-            {this.showPartyCandidates(4, "green-background")}
-          </main>
-          <Footer goBack={() => (window.location.href = "/")} />
-        </React.Fragment>
-      );
-    } else {
-      return (
-        <React.Fragment>
-          <header>
-            {/* <h1 aria-live="assertive">{header_text}</h1> */}
-            <h1 aria-live="assertive">Choose a candidate</h1>
-          </header>
-          <main className="candidates-container">
-            <h2 className={party_style}>Party {party_filter}</h2>
-            <ol className={party_style}>
-              {candidates
-                .sort((a, b) => a.party - b.party)
-                .map(c => (
-                  <li
-                    className="candidate-box"
-                    role="button"
-                    key={c.id}
-                    onClick={() => this.goToPreferences(c.name)}
-                  >
-                    <h3>{c.name}</h3>
-                    <img
-                      className="candidate-img"
-                      src={require("../" + c.image)}
-                      alt=" "
-                    />
-                    {/* Show the candidate's assigned preference */}
-                    {this.showPreference(c.preference)}
-                  </li>
-                ))}
-            </ol>
-          </main>
-          <Footer goBack={() => (window.location.href = "/")} />
-        </React.Fragment>
-      );
-    }
+    return (
+      <React.Fragment>
+        <header aria-live="assertive" aria-atomic="true">
+          <h1>List of candidates</h1>
+          <h2>Choose a candidate</h2>
+        </header>
+        <main className="candidates-container">{this.renderCandidates()}</main>
+        <Footer goBack={() => (window.location.href = "/")} />
+      </React.Fragment>
+    );
   }
 }
 

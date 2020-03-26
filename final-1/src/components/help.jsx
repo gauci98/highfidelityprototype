@@ -9,7 +9,7 @@ class Help extends Component {
         <React.Fragment>
           <header>
             <h1 aria-live="assertive">
-              How to assign a preference to the candidate
+              How to assign a preference to a candidate
             </h1>
           </header>
           <main>
@@ -211,7 +211,9 @@ class Help extends Component {
                 preferences need to be assigned in order to validate the vote.
               </li>
             </ol>
-            <button className="help-btn">Watch video tutorial</button>
+            <button className="help-btn" style={{ marginTop: 0 }}>
+              Watch video tutorial
+            </button>
           </main>
           <Footer goBack={() => (window.location.href = "/help")} />
         </React.Fragment>
@@ -220,9 +222,9 @@ class Help extends Component {
 
     return (
       <React.Fragment>
-        <header>
-          <h1 aria-live="assertive">Help</h1>
-          <h2 aria-live="assertive">Select the task you need help with</h2>
+        <header aria-live="assertive" aria-atomic="true">
+          <h1>Help</h1>
+          <h2>Select the task you need help with</h2>
         </header>
         <main>
           <ol className="help-list">

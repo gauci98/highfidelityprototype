@@ -146,6 +146,7 @@ class Preferences extends Component {
           <nav>
             <button
               className="small-btn"
+              id="back"
               onClick={() => this.props.history.goBack()}
             >
               <img className="back-icon" src={backicon} alt="Go back" />
