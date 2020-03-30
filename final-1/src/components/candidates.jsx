@@ -3,10 +3,6 @@ import Footer from "./footer";
 import Candidate from "./candidate";
 
 class Candidates extends Component {
-  state = {
-    message: null
-  };
-
   showPartyCandidates(partyId, party_style) {
     const candidates = this.getFilteredCandidates(partyId);
     return (
@@ -77,14 +73,10 @@ class Candidates extends Component {
     );
   }
 
-  componentDidMount() {
-    this.setState({ message: "hello" });
-  }
-
   render() {
     return (
       <React.Fragment>
-        <header aria-live="assertive" aria-atomic="true">
+        <header aria-live="assertive">
           <h1>List of candidates</h1>
           <h2>Choose a candidate</h2>
         </header>

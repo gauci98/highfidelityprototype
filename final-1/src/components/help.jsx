@@ -222,7 +222,7 @@ class Help extends Component {
 
     return (
       <React.Fragment>
-        <header aria-live="assertive" aria-atomic="true">
+        <header aria-live="assertive">
           <h1>Help</h1>
           <h2>Select the task you need help with</h2>
         </header>

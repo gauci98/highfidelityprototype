@@ -14,7 +14,7 @@ class Filter extends Component {
       <React.Fragment>
         <header aria-live="assertive">
           <h1>Filter Candidates by Party</h1>
-          <h2>Choose the candidates you want to see on your ballot</h2>
+          <h2>Choose the candidates you want shown on your ballot</h2>
         </header>
         <main>
           <button

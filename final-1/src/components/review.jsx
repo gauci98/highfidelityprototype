@@ -307,7 +307,7 @@ class ReviewVote extends Component {
 
     return (
       <React.Fragment>
-        <header aria-live="assertive" aria-atomic="true">
+        <header aria-live="assertive">
           <h1>Review your vote</h1>
           <h2>
             The following are the candidates you have assigned preference to in
