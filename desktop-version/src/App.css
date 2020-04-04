@@ -3,32 +3,34 @@ h2,
 main {
   text-align: center;
   padding: 0 1%;
+  margin: 0;
 }
 
 h2 {
   margin: 0;
-  font-size: 30px;
+  /* font-size: 30px; */
 }
 
 h3 {
   width: 65vw;
+  margin: 2.5vh;
 }
 
 .help-subheading {
   width: 100vw;
-  font-size: 28px;
+  /* font-size: 28px; */
   text-align: left;
   margin-bottom: 0;
 }
 
 h4 {
   font-size: 30px;
-  margin: 4vw 0;
+  margin: 0;
 }
 
 i {
   display: block;
-  font-size: 24px;
+  /* font-size: 24px; */
   margin: 2%;
   font-weight: normal;
 }
@@ -38,16 +40,16 @@ nav {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 7vh;
+  height: 9vh;
   display: inline-flex;
 }
 
 button {
   background-color: white;
   color: black;
-  border: 0.5vw solid black;
+  border: 0.3vw solid black;
   width: 28vw;
-  font-size: 24pt;
+  font-size: 20pt;
   height: 100%;
   margin: 0 3vw 0 0;
 }
@@ -66,14 +68,14 @@ button {
 }
 
 .help-btn {
-  width: 60vw;
-  margin: 2vw;
-  padding: 2vw;
+  width: 50vw;
+  margin: 1vw;
+  padding: 1vw;
 }
 
 .back-icon {
   height: 80%;
-  padding: 5%;
+  padding: 4%;
 }
 
 .delete-btn {
@@ -84,14 +86,14 @@ button {
 }
 
 .rev-del {
-  width: 12vw;
-  height: 11vh;
+  width: 9vw;
+  height: 12vh;
   margin: 0;
 }
 
 .delete-icon {
   max-height: 85%;
-  max-width: 25%;
+  max-width: 20%;
   display: inline;
   vertical-align: middle;
   padding-right: 3%;
@@ -103,13 +105,13 @@ button {
 
 .rev-btn {
   width: 40vw;
-  height: 9vh;
+  height: 10vh;
   /* padding: 2%; */
-  margin: 2vw;
+  margin: 1vw;
 }
 
 .rev-icon {
-  max-width: 15%;
+  max-width: 8%;
   display: inline;
   vertical-align: middle;
   padding-right: 3vw;
@@ -118,8 +120,8 @@ button {
 .up-down-btn {
   width: 100%;
   display: block;
-  height: 5vh;
-  border: 2px solid black;
+  height: 6vh;
+  border: 0.5vh solid black;
   background-color: white;
   /* margin: 20% 20% 15% 20%; */
   margin: 0;
@@ -133,11 +135,11 @@ button {
 }
 
 .up-down-icon {
-  height: 80%;
-  padding: 5%;
+  height: 100%;
 }
+
 #cast-icon {
-  max-width: 25%;
+  max-width: 10%;
 }
 
 .cast-btn {
@@ -149,14 +151,14 @@ button {
 }
 
 label {
-  font-size: 30px;
+  /* font-size: 30px; */
   margin: 2vw;
   display: block;
 }
 
 p {
-  font-size: 24px;
-  margin: 1%;
+  /* font-size: 24px; */
+  margin: 0;
 }
 
 input {
@@ -169,23 +171,28 @@ input {
   visibility: hidden;
 }
 
+.nums-container {
+  margin: 2vh 6vw;
+}
+
 .number {
-  border: 1vw solid black;
+  border: 0.6vw solid black;
   display: inline-block;
   border-radius: 6vw;
   background-color: white;
-  width: 12vw;
-  height: 12vw;
-  margin: 2.5vw 7vw;
+  width: 7vw;
+  height: 7vw;
+  margin: 1vw 4vw;
   font-size: 35px;
   font-weight: 600;
 }
 
 .filter-btn {
-  border: 1vw solid black;
+  border: 0.5vw solid black;
   padding: 1.5vh;
+  font-size: 20px;
   width: 90vw;
-  margin-top: 3.5vh;
+  margin-top: 3vh;
   font-weight: 550;
 }
 
@@ -207,10 +214,12 @@ input {
 
 .candidates-container {
   text-align: left;
-  max-height: 70vh;
-  padding: 1%;
+  max-height: 72vh;
+  margin: 2vw;
+  padding: 0;
   overflow-y: auto;
   list-style-type: none;
+  border: 0.5vh solid black;
 }
 
 .help-container {
@@ -226,12 +235,17 @@ input {
 }
 
 #review-container {
-  max-height: 53vh;
-  margin-bottom: 3vw;
-  border: 2px solid black;
+  max-height: 55vh;
+  margin: 2vh 5vw;
+  border: 0.3vw solid black;
+  text-align: center;
+  width: 86vw;
+  overflow-y: auto;
+  padding: 0;
 }
 
 ol {
+  text-align: center;
   padding: 0;
   margin: 0 0 2vh 0;
 }
@@ -239,37 +253,34 @@ ol {
 .candidate-box {
   text-align: start;
   background-color: white;
-  border: 0.5vw solid black;
+  border: 0.2vw solid black;
   display: inline-flex;
-  width: 94%;
+  width: 90%;
   padding-left: 2vw;
   margin: 1vh;
   font-size: 24px;
+  height: 12vh;
 }
 
 .rev-candidate {
-  width: 60vw;
+  width: 50vw;
   margin: 0;
 }
 
 .candidate-img {
-  width: 14%;
-  border-right: 0.5vw solid black;
+  width: 8%;
+  border-right: 0.2vw solid black;
 }
 
 .preference-box {
-  padding-left: 4%;
+  padding: 2.5vh;
 }
 
 .rev-pref {
   width: 5vw;
   border-right: 0.5vw solid black;
-  padding-right: 2vw;
+  padding: 2.5vh;
   margin-right: 2vw;
-}
-
-.rev-name {
-  font-size: 30px;
 }
 
 .help-list {
@@ -277,24 +288,21 @@ ol {
 }
 
 .help-item {
-  font-size: 30px;
-  border: 0.5vw solid black;
-  margin: 3vh 0;
-  padding: 2vw;
+  font-size: 24px;
+  border: 0.3vw solid black;
+  margin: 2vh 0;
+  padding: 1vh;
 }
 
 .steps-list {
-  font-size: 28px;
+  /* font-size: 28px; */
   text-align: justify;
   padding-left: 5vw;
 }
 
 .steps-item {
   padding: 1vw;
-  /* WCAG text spacing guidelines */
-  line-height: 42px;
-  word-spacing: 3px; /*4.5*/
-  letter-spacing: 3px; /*3.5*/
+  font-size: 20px;
 }
 
 .yellow-background {
@@ -319,11 +327,11 @@ ol {
 }
 
 .alert-btn {
-  width: 50vw;
-  padding: 3%;
+  width: 25vw;
+  padding: 1%;
   height: 10%;
   margin: 4vw;
-  font-size: 35px;
+  /* font-size: 35px; */
   font-weight: 600;
 }
 
@@ -377,4 +385,13 @@ ol {
   border-radius: 10px;
   background: white;
   border: 1px solid black;
+}
+
+.invalid-vote-btn {
+  padding: 1.5vw;
+  width: 70vw;
+  margin: 2vw;
+  border: 0.5vw solid black;
+  font-size: 22px;
+  font-weight: 550;
 }
